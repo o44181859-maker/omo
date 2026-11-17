@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Our Song ❤️</title>
+
+<link rel="stylesheet"
+href="../css/style.css">
+
+<link rel="stylesheet"
+href="../css/music.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="music-page">
+
+<h1>🎵 Our Song</h1>
+
+<p class="dedication">
+
+Every time I hear this song,
+I think of you ❤️
+
+</p>
+
+<div class="player">
+
+<div class="record-container">
+
+<div class="record">
+
+<div class="record-center"></div>
+
+</div>
+
+<div class="needle"></div>
+
+</div>
+
+<h2 id="songTitle">
+
+Our Forever Song
+
+</h2>
+
+<audio id="audio">
+
+<source
+src="../assets/music/song.mp3"
+type="audio/mp3">
+
+</audio>
+
+<div class="controls">
+
+<button id="prev">
+
+<i class="fa-solid fa-backward"></i>
+
+</button>
+
+<button id="play">
+
+<i class="fa-solid fa-play"></i>
+
+</button>
+
+<button id="next">
+
+<i class="fa-solid fa-forward"></i>
+
+</button>
+
+</div>
+
+<input
+
+type="range"
+
+id="progress"
+
+value="0"
+
+min="0"
+
+max="100">
+
+<div class="time">
+
+<span id="current">
+
+0:00
+
+</span>
+
+<span id="duration">
+
+0:00
+
+</span>
+
+</div>
+
+<input
+
+type="range"
+
+id="volume"
+
+min="0"
+
+max="1"
+
+step=".01"
+
+value="1">
+
+<a href="../index.html">
+
+<button>
+
+🏠 Home
+
+</button>
+
+</a>
+
+</div>
+
+<div class="visualizer">
+
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+</div>
+
+<script src="../js/player.js"></script>
+
+</body>
+
+</html>

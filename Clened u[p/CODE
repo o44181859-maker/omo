@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>StudyFlow Pro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="CODEE">
+</head>
+
+<body>
+
+<div class="app">
+
+  <header class="header">
+    <h1>📚 StudyFlow</h1>
+    <p class="subtitle">Stay consistent. Stay ahead.</p>
+  </header>
+
+  <!-- DASHBOARD -->
+  <section class="dashboard">
+    <div class="card">
+      <p>🔥 Streak</p>
+      <h2 id="streak">0</h2>
+    </div>
+
+    <div class="card">
+      <p>📊 Progress</p>
+      <h2 id="progress">0%</h2>
+    </div>
+  </section>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
+  <!-- QUOTE -->
+  <section class="quote-section">
+    <p id="quote"></p>
+  </section>
+
+  <!-- ADD -->
+  <section>
+    <input type="text" id="topicInput" placeholder="Enter topic">
+    <input type="text" id="subjectInput" placeholder="Subject">
+    <button onclick="addTopic()">Add Topic</button>
+  </section>
+
+  <!-- FILTER + SEARCH -->
+  <section>
+    <select id="filter" onchange="render()">
+      <option value="all">All</option>
+      <option value="pending">To Study</option>
+      <option value="done">Completed</option>
+    </select>
+
+    <input type="text" id="searchInput" placeholder="Search..." oninput="render()">
+  </section>
+
+  <!-- LIST -->
+  <section>
+    <ul id="list"></ul>
+    <button onclick="clearCompleted()">Clear Completed</button>
+  </section>
+
+  <!-- TIMER -->
+  <section class="pomodoro">
+    <h2>⏳ Focus Mode</h2>
+
+    <input type="number" id="customTime" placeholder="Focus minutes">
+    <input type="number" id="breakTime" placeholder="Break minutes">
+
+    <label>
+      <input type="checkbox" id="strictMode"> Strict Mode
+    </label>
+
+    <div class="timer-circle">
+      <svg width="160" height="160">
+        <circle cx="80" cy="80" r="70" stroke="#333" stroke-width="10" fill="none"/>
+        <circle id="progressRing"
+          cx="80" cy="80" r="70"
+          stroke="#7f5af0"
+          stroke-width="10"
+          fill="none"
+          stroke-dasharray="440"
+          stroke-dashoffset="440"/>
+      </svg>
+      <div id="timer">25:00</div>
+    </div>
+
+    <div class="timer-buttons">
+      <button onclick="startTimer()">Start</button>
+      <button onclick="pauseTimer()">Pause</button>
+      <button onclick="endSession()">End</button>
+      <button onclick="resetTimer()">Reset</button>
+    </div>
+
+    <p>📊 Sessions today: <span id="sessionCount">0</span></p>
+  </section>
+
+</div>
+
+<script src="CODEEE"></script>
+</body>
+</html>

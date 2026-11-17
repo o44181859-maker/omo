@@ -1,0 +1,482 @@
+/* =========================
+   Google Font
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Pacifico&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+    min-height:100vh;
+    background:linear-gradient(135deg,#ffd6e8,#ffc6dc,#ffe6f2);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+    color:#444;
+}
+
+/* =========================
+Background Animation
+========================= */
+
+@keyframes bgMove{
+
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
+
+/* =========================
+Hero Section
+========================= */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+text-align:center;
+
+padding:30px;
+
+position:relative;
+
+}
+
+.hero h1{
+
+font-size:4rem;
+
+font-family:'Pacifico',cursive;
+
+color:#ff4d94;
+
+margin-bottom:20px;
+
+text-shadow:0 5px 20px rgba(255,80,140,.3);
+
+}
+
+.hero p{
+
+font-size:1.3rem;
+
+max-width:650px;
+
+margin-bottom:40px;
+
+}
+
+/* =========================
+Button
+========================= */
+
+button{
+
+background:#ff4d94;
+
+color:white;
+
+border:none;
+
+padding:18px 38px;
+
+border-radius:50px;
+
+font-size:1rem;
+
+cursor:pointer;
+
+transition:.35s;
+
+box-shadow:0 10px 25px rgba(255,80,140,.35);
+
+}
+
+button:hover{
+
+transform:translateY(-5px) scale(1.05);
+
+}
+
+/* =========================
+Gift Menu
+========================= */
+
+.hidden{
+
+display:none;
+
+}
+
+#giftMenu{
+
+padding:100px 8%;
+
+}
+
+#giftMenu h2{
+
+text-align:center;
+
+font-size:2.8rem;
+
+margin-bottom:50px;
+
+color:#ff4d94;
+
+font-family:'Pacifico';
+
+}
+
+.gift-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:30px;
+
+}
+
+.gift-card{
+
+background:rgba(255,255,255,.35);
+
+backdrop-filter:blur(18px);
+
+border-radius:25px;
+
+padding:40px;
+
+text-align:center;
+
+transition:.4s;
+
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+
+cursor:pointer;
+
+}
+
+.gift-card:hover{
+
+transform:translateY(-12px) rotate(-2deg);
+
+box-shadow:0 25px 50px rgba(255,90,150,.25);
+
+}
+
+.gift-card{
+
+font-size:55px;
+
+}
+
+.gift-card h3{
+
+margin-top:20px;
+
+font-size:1.3rem;
+
+color:#ff4d94;
+
+}
+
+/* =========================
+Links
+========================= */
+
+a{
+
+text-decoration:none;
+
+color:inherit;
+
+}
+
+/* =========================
+Loading Screen
+========================= */
+
+.loading-screen{
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+background:#ffd8ea;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+z-index:9999;
+
+}
+
+.loader{
+
+width:70px;
+
+height:70px;
+
+border-radius:50%;
+
+border:8px solid white;
+
+border-top:8px solid hotpink;
+
+animation:spin 1s linear infinite;
+
+margin-top:30px;
+
+}
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+/* =========================
+Floating Hearts Container
+========================= */
+
+.floating-hearts{
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+pointer-events:none;
+
+overflow:hidden;
+
+left:0;
+
+top:0;
+
+z-index:-1;
+
+}
+#particles-js{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+left:0;
+
+top:0;
+
+z-index:-2;
+
+}
+
+.glass{
+
+background:rgba(255,255,255,.25);
+
+backdrop-filter:blur(20px);
+
+padding:50px;
+
+border-radius:35px;
+
+box-shadow:
+
+0 30px 60px rgba(0,0,0,.12);
+
+max-width:700px;
+
+width:90%;
+
+}
+
+.glass p{
+
+margin:25px 0;
+
+font-size:1.2rem;
+
+}
+
+.glass button{
+
+margin-top:25px;
+
+font-size:18px;
+
+padding:18px 40px;
+
+}
+/* ======================
+3D Gift Box
+====================== */
+
+.gift-box{
+
+position:relative;
+
+width:180px;
+
+height:180px;
+
+margin:auto;
+
+cursor:pointer;
+
+perspective:1000px;
+
+transition:.4s;
+
+}
+
+.gift-box:hover{
+
+transform:translateY(-12px);
+
+}
+
+/* Body */
+
+.gift-body{
+
+position:absolute;
+
+bottom:0;
+
+width:180px;
+
+height:120px;
+
+background:#ff7fb5;
+
+border-radius:12px;
+
+box-shadow:
+
+0 20px 35px rgba(0,0,0,.18);
+
+}
+
+/* Lid */
+
+.gift-lid{
+
+position:absolute;
+
+top:20px;
+
+width:190px;
+
+height:45px;
+
+left:-5px;
+
+background:#ff9ac7;
+
+border-radius:10px;
+
+transform-origin:bottom;
+
+transition:.7s;
+
+z-index:4;
+
+}
+
+/* Ribbon */
+
+.ribbon-v{
+
+position:absolute;
+
+left:82px;
+
+width:16px;
+
+height:120px;
+
+bottom:0;
+
+background:white;
+
+z-index:3;
+
+}
+
+.ribbon-h{
+
+position:absolute;
+
+top:58px;
+
+left:0;
+
+width:180px;
+
+height:16px;
+
+background:white;
+
+z-index:3;
+
+}
+
+.gift-title{
+
+position:absolute;
+
+bottom:-45px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+font-weight:600;
+
+color:#ff4d94;
+
+white-space:nowrap;
+
+}

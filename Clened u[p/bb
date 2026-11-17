@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Block Blast Clone</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f4f4f4;
+    }
+    #game-board {
+      display: grid;
+      grid-template-columns: repeat(10, 40px);
+      grid-template-rows: repeat(10, 40px);
+      gap: 2px;
+      margin: 20px auto;
+      width: max-content;
+    }
+    .cell {
+      width: 40px;
+      height: 40px;
+      background-color: lightgray;
+      border: 1px solid #ccc;
+    }
+    .block {
+      background-color: steelblue;
+    }
+    #pieces {
+      margin-top: 20px;
+    }
+    .piece {
+      display: inline-block;
+      margin: 10px;
+      cursor: grab;
+    }
+    .piece div {
+      width: 40px;
+      height: 40px;
+      background: tomato;
+      border: 1px solid #333;
+      display: inline-block;
+    }
+    #score {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Block Blast Clone</h1>
+  <div id="score">Score: 0</div>
+  <div id="game-board"></div>
+  <div id="pieces"></div>
+
+  <script>
+    const board = document.getElementById("game-board");
+    const scoreDisplay = document.getElementById("score");
+    const piecesContainer = document.getElementById("pieces");
+    let score = 0;
+
+    // Create board cells
+    for (let i = 0; i < 100; i++) {
+      const cell = document.createElement("div");
+      cell.classList.add("cell");
+      cell.dataset.index = i;
+      board.appendChild(cell);
+    }
+
+    // Example pieces (shapes)
+    const shapes = [
+      [1],            // single block
+      [1,1],          // two in a row
+      [1,0,1],        // L shape
+      [1,1,1],        // three in a row
+      [1,1,0,1]       // T shape
+      [1,0,1,1]  
+      [1,1,1,1]  
+      [1,1,1,0,1]  
+      [1,1,0,1,1]  
+      [1,0,1,1,1]  
+    ];
+
+    // Generate draggable pieces
+    function generatePieces() {
+      piecesContainer.innerHTML = "";
+      shapes.forEach(shape => {
+        const piece = document.createElement("div");
+        piece.classList.add("piece");
+        shape.forEach(val => {
+          const block = document.createElement("div");
+          if (val === 1) block.style.background = "tomato";
+          else block.style.background = "transparent";
+          piece.appendChild(block);
+        });
+        piece.draggable = true;
+        piece.addEventListener("dragstart", e => {
+          e.dataTransfer.setData("shape", JSON.stringify(shape));
+        });
+        piecesContainer.appendChild(piece);
+      });
+    }
+
+    // Allow dropping on board
+    board.addEventListener("dragover", e => e.preventDefault());
+    board.addEventListener("drop", e => {
+      const shape = JSON.parse(e.dataTransfer.getData("shape"));
+      const targetIndex = parseInt(e.target.dataset.index);
+      placeShape(shape, targetIndex);
+    });
+
+    // Place shape on board
+    function placeShape(shape, index) {
+      const cells = document.querySelectorAll(".cell");
+      shape.forEach((val, i) => {
+        if (val === 1 && cells[index + i]) {
+          cells[index + i].classList.add("block");
+        }
+      });
+      updateScore(10);
+      checkLines();
+    }
+
+    // Update score
+    function updateScore(points) {
+      score += points;
+      scoreDisplay.textContent = "Score: " + score;
+    }
+
+    // Check full rows/columns
+    function checkLines() {
+      const cells = document.querySelectorAll(".cell");
+      // Check rows
+      for (let r = 0; r < 10; r++) {
+        let fullRow = true;
+        for (let c = 0; c < 10; c++) {
+          if (!cells[r*10 + c].classList.contains("block")) {
+            fullRow = false;
+            break;
+          }
+        }
+        if (fullRow) {
+          for (let c = 0; c < 10; c++) {
+            cells[r*10 + c].classList.remove("block");
+          }
+          updateScore(100);
+        }
+      }
+      // Check columns
+      for (let c = 0; c < 10; c++) {
+        let fullCol = true;
+        for (let r = 0; r < 10; r++) {
+          if (!cells[r*10 + c].classList.contains("block")) {
+            fullCol = false;
+            break;
+          }
+        }
+        if (fullCol) {
+          for (let r = 0; r < 10; r++) {
+            cells[r*10 + c].classList.remove("block");
+          }
+          updateScore(100);
+        }
+      }
+    }
+
+    generatePieces();
+  </script>
+</body>
+</html>
